@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="JogoXadrez" default="build" basedir=".">
+
+<!-- ============ Nome dos diretórios =================== -->
+
+<!--
+
+
+  build.home     Diretório build
+
+  src.home       Arquivo fonte.
+  
+  dist.home 	 Organização dos arquivos.
+
+
+-->
+
+  <property name="build.home"    value="${basedir}/build"/>
+  <property name="src.home"      value="${basedir}/src"/>
+  <property name="dist.home"      value="${basedir}/dist"/>	
+  
+
+
+<!--  ==================== OPÇÕES DE COMPILAÇÃO ==================== -->
+<!--
+
+	Opções de compilação.
+	
+-->
+
+  <property name="compile.debug"       value="true"/>
+  <property name="compile.deprecation" value="false"/>
+  <property name="compile.optimize"    value="true"/>
+
+
+
+<!-- ==================== TAREFA COMPILAR =============================== -->
+
+<!--
+
+	Compila o projeto.
+	
+-->
+
+  <target name="compile" depends="clear"  description="Compila os arquivos fonte Java">
+  	
+	<!-- Compila os arquivos *.java-->
+  	<mkdir dir="${build.home}/bin"/>
+    <javac srcdir="${src.home}"
+          destdir="${build.home}/bin"
+    	classpath="${basedir}/lib/log4j-1.2.8.jar"
+            debug="${compile.debug}"
+      deprecation="${compile.deprecation}"
+         optimize="${compile.optimize}">
+    </javac>
+	
+	
+	
+  </target>
+
+
+<!-- ==================== TAREFA BUILD ================================== -->
+<!--
+
+	Organiza o projeto na pasta build.
+	Pasta geradas:
+		
+		build/
+			+	src/
+			+	imagens/
+			+   lib/
+			+   config/
+			+	JogoXadrez.jar
+			
+-->
+
+	  <target name="build" depends="compile" description="Build.">
+		
+		    <copy todir="${build.home}/imagens">
+		      <fileset dir="${basedir}/imagens"/>
+		    </copy>
+
+		    <copy todir="${build.home}/lib">
+		      <fileset dir="${basedir}/lib"/>
+		    </copy>
+	  	
+		    <copy todir="${build.home}/config">
+		      <fileset dir="${basedir}/config"/>
+		    </copy>
+
+	  		<copy todir="${build.home}/src">
+		      <fileset dir="${basedir}/src">
+		   		<exclude name="**/CVS/**"/>
+		      </fileset>
+		    </copy>
+		    
+			<jar destfile="${build.home}/JogoXadrez.jar">
+			<fileset dir="${build.home}/bin"/>
+			<manifest>
+				
+				<attribute name="Main-Class" 
+					value="com/darlan/xadrez/gui/AppXadrez"/>
+				<attribute name="Class-Path" 
+					value=" lib/log4j-1.2.8.jar config/ "/>
+
+			</manifest>
+		 </jar> 
+		
+	  </target>
+
+<!-- ==================== TAREFA CLEAR ================================== -->
+<!--
+
+	Remove a pasta build.
+			
+		build/
+			+	src/
+			+	imagens/
+			+	BatalhaNaval.jar
+			
+-->
+	
+	  <target name="clear" description="Clear.">
+
+		<delete dir="${build.home}"/>
+	  	
+	  </target>
+	
+<!-- ==================== TAREFA DIST ================================== -->
+	<!--
+
+	Organiza o projeto com os fontes e o build na pasta dist.
+	Pasta geradas:
+		
+		dist/
+			+	src/
+			+	imagens/
+			+   lib/
+			+   config/
+			+   build.xml
+			+	BatalhaNaval.jar
+				
+	-->
+		
+	  <target name="dist" depends="build" description="Organiza os arquivos inclusive o build.xml">
+
+	  	 <copy todir="${dist.home}">
+		      <fileset dir="${basedir}/build"/>
+         </copy>		
+	  	 <copy file="build.xml" todir="${dist.home}"/>
+		  	
+	  </target>	
+	
+
+
+</project>
+
