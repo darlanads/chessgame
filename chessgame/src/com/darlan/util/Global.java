@@ -47,13 +47,13 @@ public final class Global {
 			+ "cavaloPreto.gif";
 	
 	/**
-	 * Constante que inidica a imagem do pe�o branco do xadrez.
+	 * Constante que inidica a imagem do peco branco do xadrez.
 	 */
 	public static final String IMG_PEAO_BRANCO = DIRETORIO_IMG 
 			+ "peaoBranco.gif";		
 
 	/**
-	 * Constante que inidica a imagem do pe�o preto do xadrez.
+	 * Constante que inidica a imagem do peco preto do xadrez.
 	 */
 	public static final String IMG_PEAO_PRETO = DIRETORIO_IMG 
 			+ "peaoPreto.gif";		
