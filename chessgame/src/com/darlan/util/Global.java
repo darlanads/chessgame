@@ -15,13 +15,13 @@ package com.darlan.util;
  */
 public final class Global {
 	
-	// ---------------- CONSTANTES DE PARA UTILIZAÇAO NAS IMAGENS --------//	
+	// ---------------- CONSTANTES DE PARA UTILIZAï¿½AO NAS IMAGENS --------//	
 	/**
-	 * Constante que indica o diretório que contem as imagens.
+	 * Constante que indica o diretorio que contem as imagens.
 	 */
 	public static final String DIRETORIO_IMG = "imagens/";
 
-	// ----------- PEÇAS -----------
+	// ----------- PECAS -----------
 	/**
 	 * Constante que inidica a imagem do bispo branco do xadrez.
 	 */
@@ -47,13 +47,13 @@ public final class Global {
 			+ "cavaloPreto.gif";
 	
 	/**
-	 * Constante que inidica a imagem do peão branco do xadrez.
+	 * Constante que inidica a imagem do peï¿½o branco do xadrez.
 	 */
 	public static final String IMG_PEAO_BRANCO = DIRETORIO_IMG 
 			+ "peaoBranco.gif";		
 
 	/**
-	 * Constante que inidica a imagem do peão preto do xadrez.
+	 * Constante que inidica a imagem do peï¿½o preto do xadrez.
 	 */
 	public static final String IMG_PEAO_PRETO = DIRETORIO_IMG 
 			+ "peaoPreto.gif";		
